@@ -11,9 +11,9 @@ import {
 
 import { SOMETHING_WENT_WRONG } from '@common/constants/error.constants';
 
+import { LoginDto } from './dto/login.dto';
+import { RegisterDto } from './dto/register.dto';
 import { AuthService } from './auth.service';
-import { LoginDto } from './login.dto';
-import { RegisterDto } from './register.dto';
 
 @Controller('auth')
 export class AuthController {

@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 
 import { UserType } from '@entities/user/types';
 
-import { RegisterDto } from '../../auth/register.dto';
+import { RegisterDto } from '../../auth/dto/register.dto';
 
 type TJwtPayload = JwtPayload & { id: string };
 @Injectable()

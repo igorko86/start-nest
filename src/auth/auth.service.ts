@@ -12,8 +12,8 @@ import { TokenService } from '@common/token/token.service';
 import { TokenEntityService } from '@entities/token/tokenEntity.service';
 import { UserEntityService } from '@entities/user/userEntity.service';
 
-import { LoginDto } from './login.dto';
-import { RegisterDto } from './register.dto';
+import { LoginDto } from './dto/login.dto';
+import { RegisterDto } from './dto/register.dto';
 
 @Injectable()
 export class AuthService {

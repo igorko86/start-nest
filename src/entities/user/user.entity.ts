@@ -3,11 +3,14 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
-import { UserType } from '@entities/user/types';
+import { Card } from '@entities/cards/card.entity';
+
+import { UserType } from './types';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -39,4 +42,7 @@ export class User extends BaseEntity {
 
   @UpdateDateColumn({ type: 'timestamptz', name: 'updated_at' })
   updatedAt: Date;
+
+  @OneToMany(() => Card, (card) => card.tutor)
+  cards: Card[];
 }
