@@ -9,3 +9,13 @@ export type QuestionItem = {
   answer?: string;
   correctAnswer?: string;
 };
+
+export type QueryGetExercises = {
+  searchValue?: string;
+  type?: 'all' | 'favourite';
+  exerciseType?: ExerciseType;
+  size?: number;
+  page?: number;
+  tutorId?: string;
+  exerciseIds?: string[];
+};

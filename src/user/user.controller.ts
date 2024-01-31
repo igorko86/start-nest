@@ -1,13 +1,13 @@
 import { Response } from 'express';
 import { Controller, Get, Param, Query, Res } from '@nestjs/common';
 
-import { CardsService } from './cards.service';
-import { GetCardList } from './types';
+import { GetCardList, GetExerciseList } from './types';
+import { UserService } from './user.service';
 
-@Controller('cards')
-export class CardsController {
-  constructor(readonly cardsService: CardsService) {}
-  @Get()
+@Controller('user')
+export class UserController {
+  constructor(readonly cardsService: UserService) {}
+  @Get('cards')
   async getCardList(@Query() query: GetCardList, @Res() res: Response) {
     const cardsData = await this.cardsService.getCardList(query);
 
@@ -25,5 +25,11 @@ export class CardsController {
   ) {
     const exercise = await this.cardsService.getCardExercise(exerciseId);
     res.send(exercise);
+  }
+
+  @Get('exercises')
+  async getExerciseList(@Query() query: GetExerciseList, @Res() res: Response) {
+    const exerciseList = await this.cardsService.getExerciseList(query);
+    res.send(exerciseList);
   }
 }

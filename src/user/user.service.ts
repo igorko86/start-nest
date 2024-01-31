@@ -4,17 +4,24 @@ import { SOMETHING_WENT_WRONG } from '@common/constants/error.constants';
 import { CardEntityService } from '@entities/cards/cardEntity.service';
 import { ExerciseEntityService } from '@entities/exercise/exerciseEntity.service';
 
-import { CardList, GetCard, GetCardList } from './types';
+import {
+  CardList,
+  ExerciseList,
+  GetCard,
+  GetCardList,
+  GetExerciseList,
+} from './types';
 import { addBucketName } from './utils';
 
 @Injectable()
-export class CardsService {
+export class UserService {
   constructor(
     readonly cardEntityService: CardEntityService,
     readonly exerciseEntityService: ExerciseEntityService,
   ) {}
   async getCardList(params: GetCardList): Promise<CardList> {
-    const [cards, totalCount] = await this.cardEntityService.getCards(params);
+    const [cards = [], totalCount] =
+      await this.cardEntityService.getCards(params);
 
     return {
       content: cards.map((card) => ({
@@ -28,7 +35,9 @@ export class CardsService {
 
   async getCard(cardId: string): Promise<GetCard> {
     const card = await this.cardEntityService.getCard(cardId);
-
+    if (!card) {
+      throw new BadRequestException(SOMETHING_WENT_WRONG);
+    }
     const exercises = card.exercisesForCard.map((exrForCard) => {
       return {
         id: exrForCard.exercise.id,
@@ -56,6 +65,18 @@ export class CardsService {
       id: exercise.id,
       questions: exercise.questions,
       name: exercise.name,
+    };
+  }
+  async getExerciseList(params: GetExerciseList): Promise<ExerciseList> {
+    const [exercises, totalCount] =
+      await this.exerciseEntityService.getExercises(params);
+
+    return {
+      content: exercises.map((exercise) => ({
+        id: exercise.id,
+        name: exercise.name,
+      })),
+      totalCount,
     };
   }
 }

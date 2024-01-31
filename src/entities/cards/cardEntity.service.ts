@@ -1,4 +1,6 @@
+import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 
 import { RequestService } from '../../request.service';
 
@@ -7,7 +9,11 @@ import { QueryGetCards } from './types';
 
 @Injectable()
 export class CardEntityService {
-  constructor(readonly requestService: RequestService) {}
+  constructor(
+    @InjectRepository(Card)
+    private readonly cardRepository: Repository<Card>,
+    readonly requestService: RequestService,
+  ) {}
   async getCards({
     searchValue,
     tutorId,
@@ -16,12 +22,11 @@ export class CardEntityService {
     page = 0,
     size,
   }: QueryGetCards): Promise<[Card[], number]> {
-    const query = Card.createQueryBuilder('card').where(
-      'card.categoryCustomId = :categoryCustomId',
-      {
+    const query = this.cardRepository
+      .createQueryBuilder('card')
+      .where('card.categoryCustomId = :categoryCustomId', {
         categoryCustomId: this.requestService.selectedCategory,
-      },
-    );
+      });
 
     if (tutorId) {
       query.andWhere(
@@ -54,7 +59,8 @@ export class CardEntityService {
   }
 
   async getCard(cardId: string): Promise<Card> {
-    return await Card.createQueryBuilder('card')
+    return await this.cardRepository
+      .createQueryBuilder('card')
       .leftJoinAndSelect('card.exercisesForCard', 'exercisesForCard')
       .leftJoinAndSelect('exercisesForCard.exercise', 'exercise')
       .where('card.id = :cardId', { cardId })

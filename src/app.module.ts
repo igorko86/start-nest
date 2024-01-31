@@ -9,10 +9,10 @@ import { TokenService } from '@common/token/token.service';
 import { TypeormModule } from '@db/typeorm.module';
 
 import { AuthModule } from './auth/auth.module';
-import { CardsModule } from './cards/cards.module';
 import { AuthenticationMiddleware } from './middlewares/authentication.middleware';
 import { CategoryMiddleware } from './middlewares/category.middleware';
 import { MiddlewaresModule } from './middlewares/middlewares.module';
+import { UserModule } from './user/user.module';
 import { ConfigModule } from './config.module';
 import { RequestService } from './request.service';
 
@@ -21,7 +21,7 @@ import { RequestService } from './request.service';
     ConfigModule,
     TypeormModule,
     AuthModule,
-    CardsModule,
+    UserModule,
     MiddlewaresModule,
   ],
   providers: [RequestService, TokenService],

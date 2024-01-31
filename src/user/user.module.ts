@@ -5,12 +5,12 @@ import { ExerciseEntityModule } from '@entities/exercise/exerciseEntity.module';
 
 import { RequestService } from '../request.service';
 
-import { CardsController } from './cards.controller';
-import { CardsService } from './cards.service';
+import { UserController } from './user.controller';
+import { UserService } from './user.service';
 
 @Module({
   imports: [CardEntityModule, ExerciseEntityModule],
-  providers: [CardsService, RequestService],
-  controllers: [CardsController],
+  providers: [UserService, RequestService],
+  controllers: [UserController],
 })
-export class CardsModule {}
+export class UserModule {}
