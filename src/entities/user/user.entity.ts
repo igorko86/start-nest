@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 
 import { Card } from '@entities/cards/card.entity';
+import { Exercise } from '@entities/exercise/exercise.entity';
 
 import { UserType } from './types';
 
@@ -45,4 +46,7 @@ export class User extends BaseEntity {
 
   @OneToMany(() => Card, (card) => card.tutor)
   cards: Card[];
+
+  @OneToMany(() => Exercise, (exercise) => exercise.tutor)
+  exercises: Exercise[];
 }

@@ -12,3 +12,9 @@ export type GetCardList = {
   searchValue?: string;
   cardType?: 'public' | 'private';
 };
+
+export type GetCard = Card & {
+  htmlContent: string;
+  description: string;
+  exercises: any[]; // TODO fix any
+};

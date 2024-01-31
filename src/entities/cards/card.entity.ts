@@ -4,10 +4,12 @@ import {
   CreateDateColumn,
   Entity,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
+import { ExercisesForCard } from '@entities/exercisesForCard/exercisesForCard.entity';
 import { User } from '@entities/user/user.entity';
 
 import { CardType } from './types';
@@ -51,9 +53,9 @@ export class Card extends BaseEntity {
   // @OneToOne(() => FavouriteCard, (favouriteCard) => favouriteCard.card)
   // favouriteCard: FavouriteCard;
 
-  // @OneToMany(
-  //   () => ExercisesForCard,
-  //   (exercisesForCard) => exercisesForCard.card,
-  // )
-  // exercisesForCard: ExercisesForCard[];
+  @OneToMany(
+    () => ExercisesForCard,
+    (exercisesForCard) => exercisesForCard.card,
+  )
+  exercisesForCard: ExercisesForCard[];
 }

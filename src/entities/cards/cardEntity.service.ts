@@ -52,4 +52,12 @@ export class CardEntityService {
       .take(size)
       .getManyAndCount();
   }
+
+  async getCard(cardId: string): Promise<Card> {
+    return await Card.createQueryBuilder('card')
+      .leftJoinAndSelect('card.exercisesForCard', 'exercisesForCard')
+      .leftJoinAndSelect('exercisesForCard.exercise', 'exercise')
+      .where('card.id = :cardId', { cardId })
+      .getOne();
+  }
 }

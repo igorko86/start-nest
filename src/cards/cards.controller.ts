@@ -13,16 +13,17 @@ export class CardsController {
 
     res.send(cardsData);
   }
-  @Get(':id')
-  async getCard(@Param('id') id: string, @Res() res: Response) {
-    res.send({
-      id: 2,
-    });
+  @Get(':cardId')
+  async getCard(@Param('cardId') cardId: string, @Res() res: Response) {
+    const cardData = await this.cardsService.getCard(cardId);
+    res.send(cardData);
   }
-  @Get(':id/exercises/:exerciseId')
-  async getCardExercise(@Param() params: any, @Res() res: Response) {
-    res.send({
-      id: 2,
-    });
+  @Get(':cardId/exercises/:exerciseId')
+  async getCardExercise(
+    @Param('exerciseId') exerciseId: string,
+    @Res() res: Response,
+  ) {
+    const exercise = await this.cardsService.getCardExercise(exerciseId);
+    res.send(exercise);
   }
 }
