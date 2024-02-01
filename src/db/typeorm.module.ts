@@ -1,20 +1,18 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-console.log(process.env.POSTGRES_PASSWORD);
-// TODO move variables to env file
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'postgres',
-      database: 'portal',
+      host: process.env.DB_HOST,
+      port: process.env.DB_PORT as unknown as number,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD.toString(),
+      database: process.env.DB_NAME,
       entities: ['dist/entities/**/*.entity.js'],
-      // migrations: ['dist/db/migrations/**/*.js'],
-      synchronize: true,
+      migrations: ['dist/db/migrations/**/*.js'],
+      migrationsTableName: 'migrations',
       // cli: { migrationsDir: 'src/db/migrations' },
     }),
   ],
