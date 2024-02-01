@@ -2,7 +2,7 @@ import * as jwt from 'jsonwebtoken';
 import { JwtPayload } from 'jsonwebtoken';
 import { Injectable } from '@nestjs/common';
 
-import { UserType } from '@entities/user/types';
+import { UserType } from '@db/entities/user/types';
 
 import { RegisterDto } from '../../auth/dto/register.dto';
 

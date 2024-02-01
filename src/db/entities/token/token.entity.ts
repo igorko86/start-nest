@@ -9,7 +9,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { User } from '@entities/user/user.entity';
+import { User } from '@db/entities/user/user.entity';
 
 @Entity('token')
 export class Token extends BaseEntity {

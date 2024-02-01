@@ -8,7 +8,7 @@ import {
   MinLength,
 } from 'class-validator';
 
-import { UserType } from '@entities/user/types';
+import { UserType } from '@db/entities/user/types';
 
 export class RegisterDto {
   @IsString()

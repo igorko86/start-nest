@@ -1,8 +1,8 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 
 import { SOMETHING_WENT_WRONG } from '@common/constants/error.constants';
-import { CardEntityService } from '@entities/cards/cardEntity.service';
-import { ExerciseEntityService } from '@entities/exercise/exerciseEntity.service';
+import { CardEntityService } from '@db/entities/cards/cardEntity.service';
+import { ExerciseEntityService } from '@db/entities/exercise/exerciseEntity.service';
 
 import {
   CardList,

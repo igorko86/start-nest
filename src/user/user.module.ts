@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 
-import { CardEntityModule } from '@entities/cards/cardEntity.module';
-import { ExerciseEntityModule } from '@entities/exercise/exerciseEntity.module';
+import { CardEntityModule } from '@db/entities/cards/cardEntity.module';
+import { ExerciseEntityModule } from '@db/entities/exercise/exerciseEntity.module';
 
 import { RequestService } from '../request.service';
 

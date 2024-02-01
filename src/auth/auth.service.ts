@@ -9,8 +9,8 @@ import {
 } from '@common/constants/error.constants';
 import { MailService } from '@common/mail/mail.service';
 import { TokenService } from '@common/token/token.service';
-import { TokenEntityService } from '@entities/token/tokenEntity.service';
-import { UserEntityService } from '@entities/user/userEntity.service';
+import { TokenEntityService } from '@db/entities/token/tokenEntity.service';
+import { UserEntityService } from '@db/entities/user/userEntity.service';
 
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';

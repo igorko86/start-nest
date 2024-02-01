@@ -2,7 +2,7 @@ import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { RequestService } from '../../request.service';
+import { RequestService } from '../../../request.service';
 
 import { Exercise } from './exercise.entity';
 import { QueryGetExercises } from './types';
