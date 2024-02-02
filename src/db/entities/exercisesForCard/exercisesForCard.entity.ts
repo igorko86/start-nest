@@ -7,8 +7,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { Card } from '@db/entities/cards/card.entity';
-import { Exercise } from '@db/entities/exercise/exercise.entity';
+import { Card } from '../cards/card.entity';
+import { Exercise } from '../exercise/exercise.entity';
 
 @Entity('exercisesForCard')
 export class ExercisesForCard extends BaseEntity {

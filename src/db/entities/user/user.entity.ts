@@ -8,9 +8,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { Exercise } from '@db/entities/exercise/exercise.entity';
-
 import { Card } from '../cards/card.entity';
+import { Exercise } from '../exercise/exercise.entity';
 
 import { UserType } from './types';
 

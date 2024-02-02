@@ -9,8 +9,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { ExercisesForCard } from '@db/entities/exercisesForCard/exercisesForCard.entity';
-import { User } from '@db/entities/user/user.entity';
+import { ExercisesForCard } from '../exercisesForCard/exercisesForCard.entity';
+import { User } from '../user/user.entity';
 
 import { CardType } from './types';
 
